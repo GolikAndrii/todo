@@ -3,8 +3,11 @@ const router = express.Router()
 const controller = require('../controlers/todo')
 
 
-// localhost:5000/api/auth/login
-router.post('/login', controller.login )
-router.post('/register', controller.register )
+
+router.get('/', controller.getAll )
+router.get('/:id', controller.getById )
+router.delete('/:id', controller.remove )
+router.post('/', controller.create )
+router.post('/', controller.update )
 
 module.exports = router

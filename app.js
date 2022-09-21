@@ -1,8 +1,14 @@
 const express = require('express')
+const bodyBarser = require('body-parser')
 const authRoutes = require('./routes/auth')
+const categoryRoutes = require('./routes/category')
+const todosRoutes = require('./routes/todos')
 
 const app = express()
 
+app.use.
 app.use('/auth', authRoutes)
+app.use('/category', categoryRoutes)
+app.use('/todos', todosRoutes)
 
 module.exports = app
