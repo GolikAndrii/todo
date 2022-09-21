@@ -3,6 +3,6 @@ const authRoutes = require('./routes/auth')
 
 const app = express()
 
-app.use('/api/auth', authRoutes)
+app.use('/auth', authRoutes)
 
 module.exports = app

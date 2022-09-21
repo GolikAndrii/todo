@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const controller = require('../controlers/auth')
+const controller = require('../controlers/category')
 
 
 // localhost:5000/api/auth/login
