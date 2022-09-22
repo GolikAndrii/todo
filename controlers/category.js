@@ -1,9 +1,7 @@
 module.exports.getAll = (req, res) => {
-    res.status(200).json({
-        id: req.body.id,
-        name: req.body.name,
-        image: req.body.image
-    })
+    // res.status(200).json({
+    //     message: "This is Categories!"
+    // })
 }
 
 module.exports.getById = (req, res) => {

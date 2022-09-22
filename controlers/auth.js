@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const User = require('../models/User')
 const keys = require('../config/keys')
-const {models} = require("mongoose");
+const mongoose = require("mongoose");
 
 module.exports.login = async (req, res) => {
     const newUser = await User.findOne({email: req.body.email})
