@@ -1,5 +1,7 @@
 const express = require('express')
 const bodyBarser = require('body-parser')
+const cors = require('cors')
+const morgan = require('morgan')
 const authRoutes = require('./routes/auth')
 const categoryRoutes = require('./routes/category')
 const todosRoutes = require('./routes/todos')
