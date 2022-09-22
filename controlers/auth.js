@@ -1,16 +1,6 @@
 const User = require('../models/User')
 
 module.exports.login =  (req, res) => {
-    res.status(200).json({
-        login: {
-            email: req.body.email,
-            password: req.body.password
-        }
-    })
-}
-
-module.exports.register =  (req, res) => {
-    // email password
     const user = new User({
         email: req.body.email,
         password: req.body.password
@@ -19,4 +9,20 @@ module.exports.register =  (req, res) => {
     user.save().then(()=>{
         console.log('User created')
     })
+}
+
+module.exports.register = async (req, res) => {
+    // email password
+
+    const newUser = await User.findOne({email: req.body.email})
+
+    if(newUser){
+        // User present in DB
+        res.status(409).json({
+            message: 'This e-mail is busy. Try another one'
+        })
+    } else {
+        // User doesn't present in DB
+    }
+
 }
