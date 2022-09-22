@@ -1,5 +1,9 @@
-module.exports.getAll = function (req, res) {
-
+module.exports.getAll = (req, res) => {
+    res.status(200).json({
+        id: req.body.id,
+        name: req.body.name,
+        image: req.body.image
+    })
 }
 
 module.exports.getById = function (req, res) {

@@ -1,5 +1,7 @@
-module.exports.getAll = function (req, res) {
-
+module.exports.getAll = (req, res) => {
+    res.status(200).json({
+        todo: 'from controller TODO ALL'
+    })
 }
 
 module.exports.getById = function (req, res) {

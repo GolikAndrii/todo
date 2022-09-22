@@ -6,7 +6,8 @@ const todosRoutes = require('./routes/todos')
 
 const app = express()
 
-
+app.use(bodyBarser.urlencoded({extended: false}))
+app.use(bodyBarser.json())
 
 app.use('/auth', authRoutes)
 app.use('/category', categoryRoutes)

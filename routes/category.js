@@ -3,8 +3,8 @@ const router = express.Router()
 const controller = require('../controlers/category')
 
 
-router.get('/', controller.getAll )
-router.get('/:id', controller.getById)
+router.post('/all', controller.getAll )
+router.post('/:id', controller.getById)
 router.delete('/:id', controller.remove )
 router.post('/', controller.create )
 router.post('/', controller.update )
