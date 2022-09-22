@@ -1,15 +1,38 @@
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 const User = require('../models/User')
+const keys = require('../config/keys')
+const {models} = require("mongoose");
 
-module.exports.login =  (req, res) => {
-    const user = new User({
-        email: req.body.email,
-        password: req.body.password
-    })
+module.exports.login = async (req, res) => {
+    const newUser = await User.findOne({email: req.body.email})
 
-    user.save().then(()=>{
-        console.log('User created')
-    })
+    if (newUser) {
+        // Check the PASSWORD or User is present in DB
+        const passwordResult = bcrypt.compareSync(req.body.password, newUser.password)
+        if (passwordResult){
+          // If password is correct
+            const token = jwt.sign({
+                email: newUser.email,
+                userId: newUser._id
+            }, keys.jwt,{expiresIn: 3600})
+
+            res.status(200).json({
+                token: `Bearer ${token}`
+            })
+        } else {
+            // If password is NOT correct
+            res.status(401).json({
+                message: "Password is not correct. Try again!"
+            })
+        }
+    } else {
+        // There is no User in DB
+        res.status(404).json({
+            message: "User with this e-mail is not found!"
+        })
+    }
+
 }
 
 module.exports.register = async (req, res) => {
