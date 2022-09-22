@@ -6,7 +6,8 @@ const todosRoutes = require('./routes/todos')
 
 const app = express()
 
-app.use.
+
+
 app.use('/auth', authRoutes)
 app.use('/category', categoryRoutes)
 app.use('/todos', todosRoutes)
