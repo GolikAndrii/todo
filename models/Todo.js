@@ -18,9 +18,12 @@ const todoSchema = new Schema({
         ref: 'users',
         type: Schema.Types.ObjectId
     },
-    categories:{
+    category:{
         ref: 'category',
         type: Schema.Types.ObjectId
+    },
+    done:{
+        type: Boolean,
     },
     date:{
         type: Date,
@@ -28,4 +31,4 @@ const todoSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model('users', todoSchema)
+module.exports = mongoose.model('todo', todoSchema)

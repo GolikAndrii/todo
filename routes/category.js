@@ -3,7 +3,7 @@ const router = express.Router()
 const controller = require('../controlers/category')
 const passport = require('passport')
 
-//http://localhost:5000/category/all
+//http://localhost:5000/category/
 router.get('/',passport.authenticate('jwt', {session: false}), controller.getAll )
 router.get('/:id', controller.getById)
 router.delete('/:id', controller.remove )
