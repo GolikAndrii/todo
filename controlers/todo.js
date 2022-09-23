@@ -1,6 +1,6 @@
 const Todo = require('../models/Todo')
 
-module.exports.getByCategoryId = async (req, res) => {
+module.exports.getByTodoId = async (req, res) => {
     try{
         const todo =await Todo.find({
             category: req.params.categoryId,
@@ -25,9 +25,9 @@ module.exports.getById = (req, res) => {
 
 module.exports.remove = async (req, res) => {
     try{
-        await Todo.remove({_id: req.param.id})
+        await Todo.remove({_id: req.params.id})
         res.status(200).json({
-            message: "Category was deleted"
+            message: "TODO was deleted"
         })
     } catch (e){
         console.log(e)

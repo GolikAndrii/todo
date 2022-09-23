@@ -6,7 +6,7 @@ const controller = require('../controlers/todo')
 
 router.post('/all', controller.getAll )
 router.post('/:id', controller.getById )
-router.get('/:categoryId', controller.getByCategoryId )
+router.get('/:todoId', controller.getByTodoId )
 router.delete('/:id', controller.remove )
 router.post('/', controller.create )
 router.post('/', controller.update )

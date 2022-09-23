@@ -13,16 +13,24 @@ module.exports.getById = (req, res) => {
 }
 
 module.exports.remove =  (req, res) => {
+    try{
+        Category.remove({_id: req.params.id})
+        res.status(200).json({
+            message: "Category was deleted"
+        })
+    } catch (e){
 
+    }
 }
 
-module.exports.create = (req, res) => {
+module.exports.create = async (req, res) => {
     try{
-        const category = Category({
+        const category = await Category({
             name: req.body.name,
             imageSrc:req.body.image,
             user: req.user.id
-        })
+        }).save()
+        res.status(200).json(category)
     } catch (e){
         console.log(e)
     }
