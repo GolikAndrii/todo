@@ -33,7 +33,10 @@ module.exports.create = async (req, res) => {
             name: req.body.name,
             content: req.body.content,
             image: req.body.image,
-
+            user: req.user.id,
+            category: req.body.category,
+            done: req.body.done,
+            date: req.body.date
         })
         res.status(200).json(todo)
     } catch (e){
