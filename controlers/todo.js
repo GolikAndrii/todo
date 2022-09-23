@@ -26,6 +26,9 @@ module.exports.getById = (req, res) => {
 module.exports.remove = async (req, res) => {
     try{
         await Todo.remove({_id: req.param.id})
+        res.status(200).json({
+            message: "Category was deleted"
+        })
     } catch (e){
         console.log(e)
     }
@@ -48,6 +51,15 @@ module.exports.create = async (req, res) => {
     }
 }
 
-module.exports.update = (req, res) => {
-
+module.exports.update = async (req, res) => {
+    try{
+        const todo = await Todo.findOneAndUpdate(
+            {_id:req.params.id},
+            {$set: req.body},
+            {new: true}
+        )
+        res.status(200).json(todo)
+    } catch (e){
+        console.log(e)
+    }
 }
