@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const upload = require('../middleware/upload')
 const controller = require('../controlers/category')
 const passport = require('passport')
 
@@ -7,8 +8,8 @@ const passport = require('passport')
 router.get('/',passport.authenticate('jwt', {session: false}), controller.getAll )
 router.get('/:categoryId', controller.getById)
 router.delete('/:id', controller.remove )
-router.post('/', controller.create )
-router.post('/', controller.update )
+router.post('/', upload.single('image'), controller.create )
+router.patch('/:id', upload.single('image'), controller.update )
 
 
 module.exports = router
