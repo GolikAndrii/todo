@@ -8,8 +8,8 @@ const passport = require('passport')
 router.get('/',passport.authenticate('jwt', {session: false}), controller.getAll )
 router.get('/:categoryId', controller.getById)
 router.delete('/:id', controller.remove )
-router.post('/', upload.single('image'), controller.create )
-router.patch('/:id', upload.single('image'), controller.update )
+router.post('/', passport.authenticate('jwt', {session: false}), upload.single('image'), controller.create )
+router.patch('/:id',  upload.single('image'), controller.update )
 
 
 module.exports = router
