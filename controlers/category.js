@@ -18,7 +18,11 @@ module.exports.remove =  (req, res) => {
 
 module.exports.create = (req, res) => {
     try{
-        const category = Category
+        const category = Category({
+            name: req.body.name,
+            imageSrc:req.body.image,
+            user: req.user.id
+        })
     } catch (e){
         console.log(e)
     }
