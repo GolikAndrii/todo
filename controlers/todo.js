@@ -23,8 +23,12 @@ module.exports.getById = (req, res) => {
 
 }
 
-module.exports.remove = (req, res) => {
-
+module.exports.remove = async (req, res) => {
+    try{
+        await Todo.remove({_id: req.param.id})
+    } catch (e){
+        console.log(e)
+    }
 }
 
 module.exports.create = async (req, res) => {
@@ -37,12 +41,11 @@ module.exports.create = async (req, res) => {
             category: req.body.category,
             done: req.body.done,
             date: req.body.date
-        })
+        }).save()
         res.status(200).json(todo)
     } catch (e){
         console.log(e)
     }
-
 }
 
 module.exports.update = (req, res) => {
