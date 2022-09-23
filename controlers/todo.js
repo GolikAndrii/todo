@@ -3,7 +3,7 @@ const Todo = require('../models/Todo')
 module.exports.getByTodoId = async (req, res) => {
     try{
         const todo =await Todo.find({
-            category: req.params.categoryId,
+            todo: req.params.todoId,
             user: req.user.id
         })
         res.status(200).json(todo)

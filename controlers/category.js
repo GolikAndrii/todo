@@ -1,20 +1,28 @@
 const Category = require('../models/Category')
 
 module.exports.getAll = (req, res) => {
-    // res.status(200).json({
-    //     message: "This is Categories!"
-    // })
+    res.status(200).json({
+        message: "This is Categories!"
+    })
 }
 
 
 
 module.exports.getById = (req, res) => {
-
+    try{
+        const category = Category.find({
+            category: req.params.categoryId,
+            user: req.user.id
+        })
+        res.status(200).json(category)
+    } catch (e){
+        console.log(e)
+    }
 }
 
-module.exports.remove =  (req, res) => {
+module.exports.remove = async  (req, res) => {
     try{
-        Category.remove({_id: req.params.id})
+       await Category.remove({_id: req.params.id})
         res.status(200).json({
             message: "Category was deleted"
         })
