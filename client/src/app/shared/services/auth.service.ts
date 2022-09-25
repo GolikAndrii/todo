@@ -1,8 +1,11 @@
 import {Injectable} from "@angular/core"
 import {User} from "../interfaces";
 import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
-@Injectable()
+@Injectable({
+  providedIn: "root"
+})
 
 export class AuthService{
 
@@ -13,8 +16,8 @@ export class AuthService{
 
   }
 
-  login(user: User){
-
+  login(user: User): Observable<{ token: string }>{
+    return this.http.post<{token:string}>('./todo/auth.login', user)
   }
 
 }
