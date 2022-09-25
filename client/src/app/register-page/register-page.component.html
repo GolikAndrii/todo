@@ -1,16 +1,39 @@
-<div class="card">
+<form
+  class="card"
+  [formGroup] = "form"
+  (ngSubmit)="onSubmit()"
+>
   <div class="card-content">
     <span class="card-title">Create account</span>
     <div class="input-field">
-      <input id="email" type="email" required>
+      <input
+        formControlName = "email"
+        id="email"
+        type="email"
+      >
       <label for="email">Email:</label>
+      <!--      <span-->
+      <!--        class="helper-text red-text"-->
+      <!--        *ngIf = "form.get('email')"-->
+      <!--      >-->
+      <!--        Error-->
+      <!--      </span>-->
     </div>
     <div class="input-field">
-      <input id="password" type="password" required>
+      <input
+        formControlName = "password"
+        id="password"
+        type="password"
+      >
       <label for="password">Password:</label>
     </div>
   </div>
   <div class="card-action">
-    <button class="modal-action btn waves-effect">Registration</button>
+    <button
+      type="submit"
+      class="modal-action btn waves-effect"
+      [disabled]="form.invalid || form.disabled"
+    >Registration</button>
   </div>
-</div>
+</form>
+
