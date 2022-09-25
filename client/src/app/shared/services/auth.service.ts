@@ -15,7 +15,9 @@ export class AuthService{
   constructor(private http: HttpClient) {
   }
 
-  registr(){}
+  register(user: User) : Observable<User>{
+    return this.http.post<User>('/todo/auth/register', user)
+  }
 
   login(user: User): Observable<{token: string}>{
     return this.http.post<{token: string}>('/todo/auth/login', user)
