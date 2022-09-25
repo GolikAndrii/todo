@@ -4,8 +4,8 @@ const controller = require('../controlers/auth')
 
 
 // localhost:5000/auth/login
-router.post('/todo/login', controller.login )
+router.post('/login', controller.login )
 // localhost:5000/auth/register
-router.post('/todo/register', controller.register )
+router.post('/register', controller.register )
 
 module.exports = router

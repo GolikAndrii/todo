@@ -21,8 +21,8 @@ app.use(require('cors')(''))
 app.use(bodyBarser.urlencoded({extended: false}))
 app.use(bodyBarser.json())
 
-app.use('/auth', authRoutes)
-app.use('/category', categoryRoutes)
-app.use('/todos', todosRoutes)
+app.use('/todo/auth', authRoutes)
+app.use('/todo/category', categoryRoutes)
+app.use('/todo/todos', todosRoutes)
 
 module.exports = app

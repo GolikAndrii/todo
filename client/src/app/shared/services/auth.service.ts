@@ -4,7 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 
 export class AuthService{
@@ -12,12 +12,11 @@ export class AuthService{
   constructor(private http: HttpClient) {
   }
 
-  registr(){
+  registr(){}
 
+  login(user: User): Observable<{token: string}>{
+    return this.http.post<{token: string}>('/todo/auth/login', user)
   }
 
-  login(user: User): Observable<{ token: string }>{
-    return this.http.post<{token:string}>('./todo/auth.login', user)
-  }
 
 }
