@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SiteLayoutComponent implements OnInit {
 
+  links = [
+    {url: '/overview', name: 'Overview'},
+    { url: '/categories', name: 'Categories'},
+    {url: '/alltodo', name: 'All todo'}
+  ]
+
   constructor() { }
 
   ngOnInit(): void {

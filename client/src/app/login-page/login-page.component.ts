@@ -27,7 +27,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, [Validators.required, Validators.minLength(3)])
+      password: new FormControl(null, [Validators.required])
     })
 
     this.route.queryParams.subscribe((params:Params)=>{

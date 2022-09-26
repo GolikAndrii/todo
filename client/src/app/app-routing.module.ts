@@ -12,13 +12,13 @@ const routes: Routes = [
     path: "", component: AuthLayoutComponent, children: [
       {path: '',redirectTo: '/login', pathMatch:'full'},
       {path: 'login', component: LoginPageComponent},
-      {path: 'register', component: RegisterPageComponent},
-      {path: 'overview', component: OverviewPageComponent}
+      {path: 'register', component: RegisterPageComponent}
     ]
   },
   {
     path: "", component: SiteLayoutComponent, children: [
     // path: "", component: SiteLayoutComponent, canActivate:[AuthGuard], children: [
+      {path: 'overview', component: OverviewPageComponent}
     ]
   }
 ];
