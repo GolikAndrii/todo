@@ -4,7 +4,7 @@ const upload = require('../middleware/upload')
 const controller = require('../controlers/category')
 const passport = require('passport')
 
-//http://localhost:5000/category/
+//http://localhost:5000/todo/category/
 router.get('/todo/',passport.authenticate('jwt', {session: false}), controller.getAll )
 router.get('/todo/:categoryId', controller.getById)
 router.delete('/todo/:id', controller.remove )
