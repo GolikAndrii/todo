@@ -33,11 +33,11 @@ module.exports.remove = async  (req, res) => {
 
 module.exports.create = async (req, res) => {
 
-    console.log(req.file)
+    console.log(req.path)
     const category = new Category({
         name: req.body.name,
         user: req.user.id,
-        imageSrc: req.path ? req.file.path : ''
+        imageSrc:  req.path ? req.file.path : ''
 
     })
 
