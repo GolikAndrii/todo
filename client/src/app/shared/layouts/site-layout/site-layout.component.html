@@ -1,12 +1,12 @@
 <ul class="sidenav sidenav-fixed a-sidenav">
   <h4>Newborn</h4>
   <li class="bold active" *ngFor="let link of links">
-    <a [routerLink]="[link.url]"  class="waves-effect waves-orange">
+    <a [routerLink]="[link.url]"  class="waves-effect ">
       {{link.name}}
       </a>
   </li>
 
-  <li class="bold last"><a href="#" class="waves-effect waves-orange">Log out</a></li>
+  <li class="bold last"><a href="#" class="waves-effect ">Log out</a></li>
 </ul>
 <main class="content">
   <router-outlet></router-outlet>

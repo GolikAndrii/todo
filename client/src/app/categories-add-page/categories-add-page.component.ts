@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+
+
+
 @Component({
   selector: 'app-categories-add-page',
   templateUrl: './categories-add-page.component.html',
