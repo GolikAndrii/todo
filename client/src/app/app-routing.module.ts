@@ -5,6 +5,7 @@ import {AuthLayoutComponent} from "./shared/layouts/auth-layout/auth-layout.comp
 import {SiteLayoutComponent} from "./shared/layouts/site-layout/site-layout.component";
 import {RegisterPageComponent} from "./register-page/register-page.component";
 import {OverviewPageComponent} from "./overview-page/overview-page.component";
+import {CategoriesPageComponent} from "./categories-page/categories-page.component";
 // import {AuthGuard} from "./shared/classes/auth.guard";
 
 if (localStorage.getItem('')) {
@@ -25,7 +26,8 @@ const routes: Routes = [
     path: "", component: SiteLayoutComponent, children: [
     // path: "", component: SiteLayoutComponent, canActivate:[AuthGuard], children: [
 
-      {path: 'overview', component: OverviewPageComponent}
+      {path: 'overview', component: OverviewPageComponent},
+      {path: 'categories', component: CategoriesPageComponent}
     ]
   }
 ];
