@@ -7,6 +7,12 @@ import {RegisterPageComponent} from "./register-page/register-page.component";
 import {OverviewPageComponent} from "./overview-page/overview-page.component";
 // import {AuthGuard} from "./shared/classes/auth.guard";
 
+if (localStorage.getItem('')) {
+  console.log('LS is empty')
+} else {
+  console.log('LS is full')
+}
+
 const routes: Routes = [
   {
     path: "", component: AuthLayoutComponent, children: [
@@ -18,6 +24,7 @@ const routes: Routes = [
   {
     path: "", component: SiteLayoutComponent, children: [
     // path: "", component: SiteLayoutComponent, canActivate:[AuthGuard], children: [
+
       {path: 'overview', component: OverviewPageComponent}
     ]
   }
