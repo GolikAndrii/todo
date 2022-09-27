@@ -12,6 +12,7 @@ import { HttpClientModule} from "@angular/common/http";
 import { OverviewPageComponent } from './overview-page/overview-page.component';
 import { CategoriesPageComponent } from './categories-page/categories-page.component';
 import { AlltodoPageComponent } from './alltodo-page/alltodo-page.component';
+import { CategoriesAddPageComponent } from './categories-add-page/categories-add-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AlltodoPageComponent } from './alltodo-page/alltodo-page.component';
     RegisterPageComponent,
     OverviewPageComponent,
     CategoriesPageComponent,
-    AlltodoPageComponent
+    AlltodoPageComponent,
+    CategoriesAddPageComponent
   ],
   imports: [
     BrowserModule,
