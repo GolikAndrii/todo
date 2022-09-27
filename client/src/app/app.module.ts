@@ -11,6 +11,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HttpClientModule} from "@angular/common/http";
 import { OverviewPageComponent } from './overview-page/overview-page.component';
 import { CategoriesPageComponent } from './categories-page/categories-page.component';
+import { AlltodoPageComponent } from './alltodo-page/alltodo-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CategoriesPageComponent } from './categories-page/categories-page.compo
     SiteLayoutComponent,
     RegisterPageComponent,
     OverviewPageComponent,
-    CategoriesPageComponent
+    CategoriesPageComponent,
+    AlltodoPageComponent
   ],
   imports: [
     BrowserModule,
