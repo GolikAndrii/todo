@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from "../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-site-layout',
@@ -13,9 +15,17 @@ export class SiteLayoutComponent implements OnInit {
     {url: '/all-todo', name: 'All todo'}
   ]
 
-  constructor() { }
+  constructor(private auth: AuthService, private router: Router) {
+
+  }
 
   ngOnInit(): void {
+  }
+
+  logout(event: Event){
+    event.preventDefault()
+    this.auth.loguot()
+    this.router.navigate(['/login'])
   }
 
 }

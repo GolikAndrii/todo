@@ -12,7 +12,7 @@ import { HttpClientModule} from "@angular/common/http";
 import { OverviewPageComponent } from './overview-page/overview-page.component';
 import { CategoriesPageComponent } from './categories-page/categories-page.component';
 import { AlltodoPageComponent } from './alltodo-page/alltodo-page.component';
-import { CategoriesAddPageComponent } from './categories-add-page/categories-add-page.component';
+import { CategoriesFormComponent } from './categories-page/categories-form/categories-form.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { CategoriesAddPageComponent } from './categories-add-page/categories-add
     OverviewPageComponent,
     CategoriesPageComponent,
     AlltodoPageComponent,
-    CategoriesAddPageComponent
+    CategoriesFormComponent,
   ],
   imports: [
     BrowserModule,

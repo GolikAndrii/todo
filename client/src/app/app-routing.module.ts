@@ -7,14 +7,8 @@ import {RegisterPageComponent} from "./register-page/register-page.component";
 import {OverviewPageComponent} from "./overview-page/overview-page.component";
 import {CategoriesPageComponent} from "./categories-page/categories-page.component";
 import {AlltodoPageComponent} from "./alltodo-page/alltodo-page.component";
-import {CategoriesAddPageComponent} from "./categories-add-page/categories-add-page.component";
+import {CategoriesFormComponent} from "./categories-page/categories-form/categories-form.component";
 // import {AuthGuard} from "./shared/classes/auth.guard";
-
-if (localStorage.getItem('')) {
-  console.log('LS is empty')
-} else {
-  console.log('LS is full')
-}
 
 const routes: Routes = [
   {
@@ -28,10 +22,11 @@ const routes: Routes = [
     path: "", component: SiteLayoutComponent, children: [
     // path: "", component: SiteLayoutComponent, canActivate:[AuthGuard], children: [
 
-      {path: 'overview', component: OverviewPageComponent},
-      {path: 'categories', component: CategoriesPageComponent},
+      {path: 'overview',  component: OverviewPageComponent},
       {path: 'all-todo', component: AlltodoPageComponent},
-      {path: 'add-category', component: CategoriesAddPageComponent}
+      {path: 'categories', component: CategoriesPageComponent},
+      {path: 'categories/new', component: CategoriesFormComponent},
+      {path: 'categories/:id', component: CategoriesFormComponent},
     ]
   }
 ];
