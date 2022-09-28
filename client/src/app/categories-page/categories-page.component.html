@@ -7,15 +7,15 @@
     >Add new Category</button>
   </div>
 
-  <div class="row">
+  <div class="row" *ngIf="loading">
     <div class="col s12">
       <div class="collection">
-        <a href="#!" class="collection-item">Category 1</a>
-        <a href="#!" class="collection-item">Category 2</a>
-        <a href="#!" class="collection-item active">Category 3</a>
-        <a href="#!" class="collection-item">Category 4</a>
-        <a href="#!" class="collection-item">Category 5</a>
-        <a href="#!" class="collection-item">Category 6</a>
+        <a
+          *ngFor="let category of categories"
+          href="#!"
+          class="collection-item active"
+        >{{category.name}}</a>
       </div>
     </div>
   </div>
+  <app-loader *ngIf="loading"></app-loader>

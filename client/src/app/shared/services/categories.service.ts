@@ -4,18 +4,19 @@ import {Category} from "../interfaces";
 import {Observable} from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
   }
 )
 
 export class CategoriesService {
   constructor(private http: HttpClient) {
   }
-  fetch(): Observable<Category[]>{
+
+  fetch(): Observable<Category[]> {
     return this.http.get<Category[]>('/todo/category')
   }
-  getById(id:string): Observable<Category>{
-   return  this.http.get<Category>(`/todo/category/${id}`)
-  }
 
+  getById(id: string): Observable<Category> {
+    return this.http.get<Category>(`/todo/category/${id}`)
+  }
 }
