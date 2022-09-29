@@ -9,13 +9,18 @@
 
   <div class="row" *ngIf="!loading">
     <div class="col s12">
-      <div class="collection">
+      <div class="collection" *ngIf="categories.length !==0; else empty">
         <a
           *ngFor="let category of categories"
-          href="#!"
+          [routerLink]="['/categories', category._id]"
           class="collection-item"
         >{{category.name}}</a>
       </div>
+      <ng-template #empty>
+<div class="center">
+  <h5>There are no Categories</h5>
+</div>
+      </ng-template>
     </div>
   </div>
   <app-loader *ngIf="loading"></app-loader>
