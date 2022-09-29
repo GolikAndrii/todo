@@ -17,6 +17,11 @@ export class CategoriesFormComponent implements OnInit {
   // @ts-ignore
   form: FormGroup
   isNew = true
+  // @ts-ignore
+  image: File
+  // @ts-ignore
+  imagePreview: string | ArrayBuffer | null = ''
+  imagePreviewEdit: string | undefined = ''
 
   constructor( private route: ActivatedRoute,
                private categoriesService: CategoriesService) { }
@@ -50,6 +55,7 @@ export class CategoriesFormComponent implements OnInit {
             this.form?.patchValue({
               name: category.name
             })
+            this.imagePreviewEdit = category.imageSrc
           }
         }
 
@@ -63,8 +69,15 @@ export class CategoriesFormComponent implements OnInit {
       this.inputRef.nativeElement.click()
   }
 
-  onFileUpload(event: Event){
-      const
+  onFileUpload(event: any){
+      const file = event.target.files[0]
+    this.image = file
+
+    const reader = new FileReader()
+    reader.onload = () =>{
+        this.imagePreview = reader.result
+    }
+    reader.readAsDataURL(file)
   }
 
   onSubmit(){
