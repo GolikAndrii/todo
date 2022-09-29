@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CategoriesService} from "../../shared/services/categories.service";
@@ -11,6 +11,9 @@ import { of } from 'rxjs';
   styleUrls: ['./categories-form.component.css']
 })
 export class CategoriesFormComponent implements OnInit {
+// @ts-ignore
+  @ViewChild('input') inputRef: ElementRef
+
   // @ts-ignore
   form: FormGroup
   isNew = true
@@ -55,6 +58,15 @@ export class CategoriesFormComponent implements OnInit {
 
 
   }
+
+  triggerClick(){
+      this.inputRef.nativeElement.click()
+  }
+
+  onFileUpload(event: Event){
+      const
+  }
+
   onSubmit(){
 
   }
