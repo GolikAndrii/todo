@@ -2,8 +2,10 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CategoriesService} from "../../shared/services/categories.service";
-import { switchMap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import {switchMap} from 'rxjs/operators';
+import {of} from 'rxjs';
+import {Category} from "../../shared/interfaces";
+import {error} from "@angular/compiler-cli/src/transformers/util";
 
 @Component({
   selector: 'app-categories-form',
@@ -22,14 +24,17 @@ export class CategoriesFormComponent implements OnInit {
   // @ts-ignore
   imagePreview: string | ArrayBuffer | null = ''
   imagePreviewEdit: string | undefined = ''
+  // @ts-ignore
+  category: Category
 
-  constructor( private route: ActivatedRoute,
-               private categoriesService: CategoriesService) { }
+  constructor(private route: ActivatedRoute,
+              private categoriesService: CategoriesService) {
+  }
 
   ngOnInit(): void {
-      this.form = new FormGroup({
-        name: new FormControl(null, Validators.required)
-      })
+    this.form = new FormGroup({
+      name: new FormControl(null, Validators.required)
+    })
 
     //   this.route.params.subscribe((params:Params) =>{
     //   if(params['id']){
@@ -41,17 +46,18 @@ export class CategoriesFormComponent implements OnInit {
       .pipe(
         switchMap(
           (params: Params) => {
-            if(params['id']){
+            if (params['id']) {
               this.isNew = false
               return this.categoriesService.getById(params['id'])
             }
-            return of (null)
+            return of(null)
           }
         )
       )
       .subscribe(
         category => {
-          if(category){
+          if (category) {
+            this.category = category
             this.form?.patchValue({
               name: category.name
             })
@@ -59,29 +65,44 @@ export class CategoriesFormComponent implements OnInit {
           }
         }
 
-         // error => (error.error.message  )
+        // error => (error.error.message  )
       )
 
 
   }
 
-  triggerClick(){
-      this.inputRef.nativeElement.click()
+  triggerClick() {
+    this.inputRef.nativeElement.click()
   }
 
-  onFileUpload(event: any){
-      const file = event.target.files[0]
+  onFileUpload(event: any) {
+    const file = event.target.files[0]
     this.image = file
 
     const reader = new FileReader()
-    reader.onload = () =>{
-        this.imagePreview = reader.result
+    reader.onload = () => {
+      this.imagePreview = reader.result
     }
     reader.readAsDataURL(file)
   }
 
-  onSubmit(){
-
+  onSubmit() {
+    let obs$
+    if (this.isNew) {
+      // create
+      obs$ = this.categoriesService.create(this.form.value.name, this.image)
+    } else {
+      //update
+      obs$ = this.categoriesService.update(this.category._id, this.form.value.name, this.image)
+    }
+    obs$.subscribe(
+      category => {
+        this.category = category
+      },
+      error => {
+        console.log(error)
+      }
+    )
   }
 
 }
