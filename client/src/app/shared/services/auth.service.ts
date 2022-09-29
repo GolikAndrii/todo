@@ -1,8 +1,9 @@
 import {Injectable} from "@angular/core"
 import {User} from "../interfaces";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+
 import { tap} from "rxjs/operators";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class AuthService{
   constructor(private http: HttpClient) {
   }
 
-  register(user: User) : Observable<User>{
+  register(user: User) : Observable <User>{
     return this.http.post<User>('/todo/auth/register', user)
   }
 

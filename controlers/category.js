@@ -1,10 +1,13 @@
 const Category = require('../models/Category')
 const Todo = require('../models/Todo')
 
-module.exports.getAll = (req, res) => {
-    res.status(200).json({
-        message: "This is Categories!"
-    })
+module.exports.getAll = async function(req, res) {
+    try {
+        const categories = await Category.find({user: req.user.id})
+        res.status(200).json(categories)
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 module.exports.getById = (req, res) => {
