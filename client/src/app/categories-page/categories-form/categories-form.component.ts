@@ -11,8 +11,8 @@ import { of } from 'rxjs';
   styleUrls: ['./categories-form.component.css']
 })
 export class CategoriesFormComponent implements OnInit {
-
-  form: FormGroup | undefined
+  // @ts-ignore
+  form: FormGroup
   isNew = true
 
   constructor( private route: ActivatedRoute,
@@ -48,9 +48,11 @@ export class CategoriesFormComponent implements OnInit {
               name: category.name
             })
           }
-        },
-        // error => MaterialService.toast(error.error.message  )
+        }
+
+         // error => (error.error.message  )
       )
+
 
   }
   onSubmit(){
