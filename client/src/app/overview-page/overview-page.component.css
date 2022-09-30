@@ -1,0 +1,22 @@
+.no-done{
+  color: red;
+}
+
+.done{
+  color: green;
+}
+select{
+  display: block;
+  border: none;
+  border-bottom: 1px solid #838383;
+  color: #838383;
+}
+.datepicker{
+  color: #838383;
+}
+.d-flex{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}

@@ -1,34 +1,41 @@
 <div class="page-title">
   <h4>All my TODO</h4>
-  <button class="btn btn-small js-filter tooltipped" data-tooltip="Open filter">
-    <i class="material-icons">filter_list</i>
-  </button>
 </div>
 
-<div class="filter js-filter-block hide">
+<div class="d-flex">
+<div class="filter js-filter-block">
   <div class="fr">
     <div class="col order">
       <div class="input-field inline order-position-input">
-        <input type="text" id="name" >
+        <input type="text" id="name">
         <label for="name">Name</label>
+      </div>
+    </div>
+    <div class="col order">
+      <div class="input-field inline order-position-input">
+        <select id="done">
+          <option value="" selected>Select status</option>
+          <option>Done</option>
+          <option>In work</option>
+        </select>
+<!--        <label for="done">Done</label>-->
       </div>
     </div>
     <div class="col filter-pickers">
       <div class="input-field">
-        <input type="text" class="datepicker">
+        <input type="date" class="datepicker">
         <label>Start</label>
       </div>
 
       <div class="input-field">
-        <input type="text" class="datepicker">
+        <input type="date" class="datepicker">
         <label>Finish</label>
       </div>
     </div>
   </div>
-
-  <button class="btn waves-effect wavers-light btn-small">Filter</button>
 </div>
-
+<button class="btn waves-effect wavers-light btn-small">Filter</button>
+</div>
 
 <table class="highlight mb2">
   <thead>
@@ -39,6 +46,8 @@
     <th>Name</th>
     <th>Category</th>
     <th>Done</th>
+    <th>Edit</th>
+
   </tr>
   </thead>
 
@@ -49,23 +58,95 @@
     <td>14:21</td>
     <td>First Todo</td>
     <td>Auto</td>
+    <td><i class="material-icons done">done</i></td>
 
     <td>
       <button class="btn btn-small modal-trigger grey darken-1" data-target="order-list">
-        <i class="material-icons">open_in_new</i>
+        <i class="material-icons">edit</i>
       </button>
     </td>
   </tr>
   <tr>
     <td>2</td>
+    <td>21.12.2000</td>
+    <td>14:21</td>
+    <td>First Todo</td>
+    <td>Auto</td>
+    <td><i class="material-icons done">done</i></td>
+
+    <td>
+      <button class="btn btn-small modal-trigger grey darken-1" data-target="order-list">
+        <i class="material-icons">edit</i>
+      </button>
+    </td>
+  </tr>
+  <tr>
+    <td>3</td>
     <td>01.01.2022</td>
     <td>21:12</td>
     <td>Second Todo</td>
     <td>Home</td>
+    <td><i class="material-icons no-done">clear</i></td>
 
     <td>
       <button class="btn btn-small modal-trigger grey darken-1" data-target="order-list">
-        <i class="material-icons">open_in_new</i>
+        <i class="material-icons">edit</i>
+      </button>
+    </td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>21.12.2000</td>
+    <td>14:21</td>
+    <td>First Todo</td>
+    <td>Auto</td>
+    <td><i class="material-icons done">done</i></td>
+
+    <td>
+      <button class="btn btn-small modal-trigger grey darken-1" data-target="order-list">
+        <i class="material-icons">edit</i>
+      </button>
+    </td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>21.12.2000</td>
+    <td>14:21</td>
+    <td>First Todo</td>
+    <td>Auto</td>
+    <td><i class="material-icons done">done</i></td>
+
+    <td>
+      <button class="btn btn-small modal-trigger grey darken-1" data-target="order-list">
+        <i class="material-icons">edit</i>
+      </button>
+    </td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>01.01.2022</td>
+    <td>21:12</td>
+    <td>Second Todo</td>
+    <td>Home</td>
+    <td><i class="material-icons no-done">clear</i></td>
+
+    <td>
+      <button class="btn btn-small modal-trigger grey darken-1" data-target="order-list">
+        <i class="material-icons">edit</i>
+      </button>
+    </td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>01.01.2022</td>
+    <td>21:12</td>
+    <td>Second Todo</td>
+    <td>Home</td>
+    <td><i class="material-icons no-done">clear</i></td>
+
+    <td>
+      <button class="btn btn-small modal-trigger grey darken-1" data-target="order-list">
+        <i class="material-icons">edit</i>
       </button>
     </td>
   </tr>
