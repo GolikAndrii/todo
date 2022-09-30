@@ -22,8 +22,18 @@ export class AlltodoPageComponent implements OnInit {
   imagePreviewEdit: string | undefined = ''
   // @ts-ignore
   category: Category
+  // date = new Date()
+  date = new Date
 
   ngOnInit(): void {
+
+  }
+
+  dateNow(){
+    return this.date.toLocaleDateString()
+  }
+  timeNow(){
+    return this.date.toLocaleTimeString()
   }
 
   triggerClick() {

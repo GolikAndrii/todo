@@ -12,6 +12,8 @@
 </div>
 
 <div class="row">
+  <p>Today is: <span> {{dateNow()}}</span></p>
+  <p>Time is: <span> {{timeNow()}}</span></p>
   <form class="col s12 l6" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="input-field">
       <input
@@ -19,7 +21,12 @@
         id="name"
         type="text"
       >
-      <label for="name">Name of category</label>
+      <label for="name">Enter short name of ToDo</label>
+    </div>
+
+    <div class="input-field">
+      <textarea id="textarea" class="materialize-textarea" style="resize: both!important; min-height: 7rem"></textarea>
+      <label for="textarea">Enter full describe of ToDo</label>
     </div>
 
     <div>
