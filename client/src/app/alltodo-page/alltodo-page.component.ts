@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormGroup} from "@angular/forms";
 import {Category} from "../shared/interfaces";
+import {CategoriesService} from "../shared/services/categories.service";
 
 @Component({
   selector: 'app-alltodo-page',
@@ -22,11 +23,17 @@ export class AlltodoPageComponent implements OnInit {
   imagePreviewEdit: string | undefined = ''
   // @ts-ignore
   category: Category
-  // date = new Date()
   date = new Date
 
-  ngOnInit(): void {
+  categories: Category[] = []
 
+  constructor(private alltodoService: CategoriesService) {
+  }
+
+  ngOnInit(): void {
+    this.alltodoService.fetch().subscribe(categories => {
+      this.categories = categories
+    })
   }
 
   dateNow(){
