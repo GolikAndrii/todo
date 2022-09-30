@@ -35,8 +35,8 @@
         style="display: block; margin-right: 10px">
         <option value="" selected>Select category or add new</option>
         <option
-          value="1"
           *ngFor="let category of categories"
+          value="{{category._id}}"
         >{{category.name}}</option>
       </select>
       <button
