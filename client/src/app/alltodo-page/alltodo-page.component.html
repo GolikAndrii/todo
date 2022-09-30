@@ -1,78 +1,56 @@
 <div class="page-title">
-  <h4>Name of my TODO</h4>
-  <button class="btn btn-small js-filter tooltipped" data-tooltip="Open filter">
-    <i class="material-icons">filter_list</i>
-  </button>
+  <h4>
+    <a routerLink="/categories" href="#">My TODOs</a>
+    <i class="material-icons">keyboard_arrow_right</i>
+    {{isNew ? 'Add ' : 'Edit '}} Todo
+  </h4>
+  <span>
+            <button class="btn btn-small red waves-effect">
+              <i class="material-icons">delete</i>
+            </button>
+          </span>
 </div>
 
-<div class="filter js-filter-block hide">
-  <div class="fr">
-    <div class="col order">
-      <div class="input-field inline order-position-input">
-        <input type="text" id="name" >
-        <label for="name">Name</label>
-      </div>
+<div class="row">
+  <form class="col s12 l6" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="input-field">
+      <input
+        formControlName = "name"
+        id="name"
+        type="text"
+      >
+      <label for="name">Name of category</label>
     </div>
-    <div class="col filter-pickers">
-      <div class="input-field">
-        <input type="text" class="datepicker">
-        <label>Start</label>
-      </div>
 
-      <div class="input-field">
-        <input type="text" class="datepicker">
-        <label>Finish</label>
-      </div>
+    <div>
+      <input
+        type="file"
+        class="dn"
+        (change)="onFileUpload($event)"
+        #input>
+      <button
+        (click)="triggerClick()"
+        type="button"
+        class="waves-effect waves-light btn orange lighten-2 mb2"
+      >
+        <i class="material-icons left">backup</i>
+        Upload image
+      </button>
     </div>
+
+    <div>
+      <button
+        class="waves-effect waves-light btn"
+      >
+        <i class="material-icons left">save</i>
+        Save changes
+      </button>
+    </div>
+  </form>
+
+  <div class="col s12 l4 center">
+    <img
+      class="responsive-img h200"
+    >
   </div>
-
-  <button class="btn waves-effect wavers-light btn-small">Filter</button>
-</div>
-
-
-<table class="highlight mb2">
-  <thead>
-  <tr>
-    <th>#</th>
-    <th>Date</th>
-    <th>Time</th>
-    <th>Name</th>
-    <th>Category</th>
-    <th>Done</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <tr>
-    <td>1</td>
-    <td>21.12.2000</td>
-    <td>14:21</td>
-    <td>First Todo</td>
-    <td>Auto</td>
-
-    <td>
-      <button class="btn btn-small modal-trigger grey darken-1" data-target="order-list">
-        <i class="material-icons">open_in_new</i>
-      </button>
-    </td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>01.01.2022</td>
-    <td>21:12</td>
-    <td>Second Todo</td>
-    <td>Home</td>
-
-    <td>
-      <button class="btn btn-small modal-trigger grey darken-1" data-target="order-list">
-        <i class="material-icons">open_in_new</i>
-      </button>
-    </td>
-  </tr>
-
-  </tbody>
-</table>
-
-<div class="center mb2">
-  <button class="btn waves-effect grey darken-1 btn-small">Load more...</button>
 </div>
