@@ -6,5 +6,9 @@ p{
   font-size: 0.7em;
 }
 p > span{
-  color: red;
+  color: #26a69a;
+  font-weight: 500;
+}
+.input-field > select{
+  color: #9b9b9b;
 }

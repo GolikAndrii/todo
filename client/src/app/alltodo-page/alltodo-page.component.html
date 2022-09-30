@@ -29,6 +29,20 @@
       <label for="textarea">Enter full describe of ToDo</label>
     </div>
 
+    <div class="input-field s12" style="display: flex; align-items: center;">
+      <select style="display: block; margin-right: 10px">
+        <option value="" selected>Select category or add new</option>
+        <option value="1">Option 1</option>
+      </select>
+      <button
+        class="waves-effect waves-light btn"
+        routerLink="/categories/new"
+      >
+        <i class="material-icons" style="font-size: 1em;">add</i>
+
+      </button>
+    </div>
+
     <div>
       <input
         type="file"
@@ -55,9 +69,25 @@
     </div>
   </form>
 
+
+
   <div class="col s12 l4 center">
     <img
       class="responsive-img h200"
     >
   </div>
 </div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+</script>
