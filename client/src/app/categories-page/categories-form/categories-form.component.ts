@@ -8,6 +8,7 @@ import {Category} from "../../shared/interfaces";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {describeResolvedType} from "@angular/compiler-cli/src/ngtsc/partial_evaluator";
 import {response} from "express";
+import { MaterialService } from 'src/app/shared/classes/material.service';
 
 @Component({
   selector: 'app-categories-form',
@@ -64,7 +65,8 @@ export class CategoriesFormComponent implements OnInit {
             this.form?.patchValue({
               name: category.name
             })
-            this.imagePreviewEdit = category.imageSrc
+            MaterialService.updateTextInput()
+              this.imagePreviewEdit = category.imageSrc
           }
         }
 
