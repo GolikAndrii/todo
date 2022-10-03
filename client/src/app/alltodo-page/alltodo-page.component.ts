@@ -27,7 +27,8 @@ export class AlltodoPageComponent implements OnInit {
 
   categories: Category[] = []
 
-  constructor(private alltodoService: CategoriesService) {
+  constructor(private alltodoService: CategoriesService
+  ) {
   }
 
   ngOnInit(): void {
