@@ -11,6 +11,9 @@ export interface Category {
   user?: string
 }
 
+export interface Message{
+  message: string
+}
 
 export interface Overview {
   gain: OverviewItem

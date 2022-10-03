@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Category} from "../interfaces";
+import {Category, Message} from "../interfaces";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -41,5 +41,9 @@ export class CategoriesService {
 
   getById(id: string): Observable<Category> {
     return this.http.get<Category>(`/todo/category/${id}`)
+  }
+
+  delete(id: string | undefined): Observable<Message>{
+return this.http.delete<Message>(`/todo/category/${id}`)
   }
 }

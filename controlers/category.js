@@ -10,12 +10,11 @@ module.exports.getAll = async function(req, res) {
     }
 }
 
-module.exports.getById = (req, res) => {
+module.exports.getById = async (req, res) => {
     try{
-        const category = Category.find({
-            category: req.params.categoryId,
-            user: req.user.id
-        })
+        const category = await Category.findById(req.params.id)
+
+
         res.status(200).json(category)
     } catch (e){
         console.log(e)

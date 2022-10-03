@@ -5,7 +5,7 @@
     {{isNew ? 'Add ' : 'Edit '}} category
   </h4>
   <span>
-            <button class="btn btn-small red waves-effect">
+            <button class="btn btn-small red waves-effect" (click)="deleteCategory()">
               <i class="material-icons">delete</i>
             </button>
           </span>
@@ -17,8 +17,7 @@
       <input
         formControlName = "name"
         id="name"
-        type="text"
-      >
+        type="text"      >
       <label for="name">Name of category</label>
     </div>
 
@@ -40,6 +39,7 @@
 
     <div>
       <button
+        type="submit"
         class="waves-effect waves-light btn"
       >
         <i class="material-icons left">save</i>

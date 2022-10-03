@@ -1,11 +1,13 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CategoriesService} from "../../shared/services/categories.service";
 import {switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
 import {Category} from "../../shared/interfaces";
 import {error} from "@angular/compiler-cli/src/transformers/util";
+import {describeResolvedType} from "@angular/compiler-cli/src/ngtsc/partial_evaluator";
+import {response} from "express";
 
 @Component({
   selector: 'app-categories-form',
@@ -28,7 +30,8 @@ export class CategoriesFormComponent implements OnInit {
   category: Category
 
   constructor(private route: ActivatedRoute,
-              private categoriesService: CategoriesService) {
+              private categoriesService: CategoriesService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -36,11 +39,11 @@ export class CategoriesFormComponent implements OnInit {
       name: new FormControl(null, Validators.required)
     })
 
-    //   this.route.params.subscribe((params:Params) =>{
-    //   if(params['id']){
-    //     this.isNew = false
-    //   }
-    // })
+      this.route.params.subscribe((params: Params) =>{
+      if(params['id']){
+        this.isNew = false
+      }
+    })
 
     this.route.params
       .pipe(
@@ -69,6 +72,15 @@ export class CategoriesFormComponent implements OnInit {
       )
 
 
+  }
+
+  deleteCategory(){
+    const decision = window.confirm(`Are you sure? ${this.category.name}`)
+    if (decision){
+this.categoriesService.delete(this.category._id)
+  .subscribe(
+    response => response.message  )
+    }
   }
 
   triggerClick() {
