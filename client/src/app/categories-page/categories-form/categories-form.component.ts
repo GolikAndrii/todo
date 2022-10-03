@@ -3,12 +3,12 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CategoriesService} from "../../shared/services/categories.service";
 import {switchMap} from 'rxjs/operators';
-import {of} from 'rxjs';
+import {combineLatest, of} from 'rxjs';
 import {Category} from "../../shared/interfaces";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {describeResolvedType} from "@angular/compiler-cli/src/ngtsc/partial_evaluator";
 import {response} from "express";
-import { MaterialService } from 'src/app/shared/classes/material.service';
+import {MaterialService} from 'src/app/shared/classes/material.service';
 
 @Component({
   selector: 'app-categories-form',
@@ -26,9 +26,11 @@ export class CategoriesFormComponent implements OnInit {
   image: File
   // @ts-ignore
   imagePreview: string | ArrayBuffer | null = ''
-  imagePreviewEdit: string | undefined = ''
+
   // @ts-ignore
   category: Category
+  imagePreviewEdit: string | undefined = ''
+
 
   constructor(private route: ActivatedRoute,
               private categoriesService: CategoriesService,
@@ -40,8 +42,8 @@ export class CategoriesFormComponent implements OnInit {
       name: new FormControl(null, Validators.required)
     })
 
-      this.route.params.subscribe((params: Params) =>{
-      if(params['id']){
+    this.route.params.subscribe((params: Params) => {
+      if (params['id']) {
         this.isNew = false
       }
     })
@@ -52,6 +54,7 @@ export class CategoriesFormComponent implements OnInit {
           (params: Params) => {
             if (params['id']) {
               this.isNew = false
+              this.imagePreview = ''
               return this.categoriesService.getById(params['id'])
             }
             return of(null)
@@ -65,9 +68,11 @@ export class CategoriesFormComponent implements OnInit {
             this.form?.patchValue({
               name: category.name
             })
+            this.imagePreviewEdit = category.imageSrc
+
             MaterialService.updateTextInput()
-              this.imagePreviewEdit = category.imageSrc
           }
+          console.log(this.imagePreviewEdit)
         }
 
         // error => (error.error.message  )
@@ -76,12 +81,15 @@ export class CategoriesFormComponent implements OnInit {
 
   }
 
-  deleteCategory(){
+  deleteCategory() {
     const decision = window.confirm(`Are you sure? ${this.category.name}`)
-    if (decision){
-this.categoriesService.delete(this.category._id)
-  .subscribe(
-    response => response.message  )
+    if (decision) {
+      this.categoriesService.delete(this.category._id)
+        .subscribe(
+          response => response.message,
+          () => {},
+          () => this.router.navigate(['/categories'])
+        )
     }
   }
 
@@ -92,6 +100,7 @@ this.categoriesService.delete(this.category._id)
   onFileUpload(event: any) {
     const file = event.target.files[0]
     this.image = file
+    this.imagePreview = ''
 
     const reader = new FileReader()
     reader.onload = () => {
