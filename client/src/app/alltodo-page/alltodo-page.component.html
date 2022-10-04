@@ -63,7 +63,6 @@
         Upload image
       </button>
     </div>
-
     <div>
       <button
         class="waves-effect waves-light btn"
@@ -73,7 +72,13 @@
       </button>
     </div>
   </form>
-
+  <div class="col s12 l6 center">
+    <img
+      class="responsive-img h200"
+      [src]="imagePreview"
+      *ngIf="imagePreview"
+    >
+  </div>
 
   <div class="col s12 l4 center">
     <img
@@ -83,15 +88,15 @@
 </div>
 
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems, options);
-  });
+<!--<script>-->
+<!--  document.addEventListener('DOMContentLoaded', function () {-->
+<!--    var elems = document.querySelectorAll('select');-->
+<!--    var instances = M.FormSelect.init(elems, options);-->
+<!--  });-->
 
-  // Or with jQuery
+<!--  // Or with jQuery-->
 
-  $(document).ready(function () {
-    $('select').formSelect();
-  });
-</script>
+<!--  $(document).ready(function () {-->
+<!--    $('select').formSelect();-->
+<!--  });-->
+<!--</script>-->

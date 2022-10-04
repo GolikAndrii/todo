@@ -1,4 +1,5 @@
 const Todo = require('../models/Todo')
+const Category = require("../models/Category");
 
 module.exports.getByTodoId = async (req, res) => {
     try{
@@ -12,11 +13,13 @@ module.exports.getByTodoId = async (req, res) => {
     }
 }
 
-module.exports.getAll = (req, res) => {
-    // res.status(200).json({
-    //     todo: 'from controller TODO ALL'
-    // })
-
+module.exports.getAll = async function(req, res) {
+    try {
+        const todos = await Todo.find({user: req.user.id})
+        res.status(200).json(todos)
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 module.exports.getById = (req, res) => {
