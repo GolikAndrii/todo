@@ -1,3 +1,5 @@
+import {Time} from "@angular/common";
+
 export interface User {
   _id?: string
   password: string
@@ -11,13 +13,15 @@ export interface Category {
   user?: string
 }
 
-// export interface Todo {
-//   _id?: string
-//   imageSrc?: string
-//   name: string
-//   user?: string
-//   dateNow:
-// }
+export interface Todo {
+  _id?: string
+  imageSrc?: string
+  name: string
+  user?: string
+  category: string
+  dateNow: Date
+  timeNow: Time
+}
 
 export interface Message{
   message: string

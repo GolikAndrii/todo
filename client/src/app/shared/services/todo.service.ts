@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Category, Message} from "../interfaces";
+import {Todo, Message} from "../interfaces";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -12,7 +12,7 @@ export class CategoriesService {
   constructor(private http: HttpClient) {
   }
 
-  create(name: string, image?: File): Observable<Category> {
+  create(name: string, image?: File): Observable<Todo> {
     const fd = new FormData()
 
     if (image) {
@@ -20,30 +20,30 @@ export class CategoriesService {
     }
     fd.append('name', name)
 
-    return this.http.post<Category>('/todo/category', fd)
+    return this.http.post<Todo>('/todo/todos', fd)
   }
 
-  update(id: string | undefined, name: string, image?: File): Observable<Category> {
+  update(id: string | undefined, name: string, image?: File): Observable<Todo> {
     const fd = new FormData()
 
     if (image) {
       fd.append('image', image, image.name)
     }
     fd.append('name', name)
-    return this.http.patch<Category>(`/todo/category/${id}`, fd)
+    return this.http.patch<Todo>(`/todo/todos/${id}`, fd)
   }
 
 
 
-  fetch(): Observable<Category[]> {
-    return this.http.get<Category[]>('/todo/category')
+  fetch(): Observable<Todo[]> {
+    return this.http.get<Todo[]>('/todo/todos')
   }
 
-  getById(id: string): Observable<Category> {
-    return this.http.get<Category>(`/todo/category/${id}`)
+  getById(id: string): Observable<Todo> {
+    return this.http.get<Todo>(`/todo/todos/${id}`)
   }
 
   delete(id: string | undefined): Observable<Message>{
-    return this.http.delete<Message>(`/todo/category/${id}`)
+    return this.http.delete<Message>(`/todo/todos/${id}`)
   }
 }
