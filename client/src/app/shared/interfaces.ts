@@ -11,6 +11,14 @@ export interface Category {
   user?: string
 }
 
+// export interface Todo {
+//   _id?: string
+//   imageSrc?: string
+//   name: string
+//   user?: string
+//   dateNow:
+// }
+
 export interface Message{
   message: string
 }

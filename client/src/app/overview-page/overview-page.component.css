@@ -5,6 +5,7 @@
 .done{
   color: green;
 }
+
 select{
   display: block;
   border: none;
@@ -20,3 +21,4 @@ select{
   flex-wrap: nowrap;
   justify-content: space-around;
 }
+
