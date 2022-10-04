@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
   }
 )
 
-export class CategoriesService {
+export class TodoService {
   constructor(private http: HttpClient) {
   }
 

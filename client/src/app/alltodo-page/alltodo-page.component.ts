@@ -1,7 +1,10 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormGroup} from "@angular/forms";
 import {Category} from "../shared/interfaces";
+import {Todo} from "../shared/interfaces";
 import {CategoriesService} from "../shared/services/categories.service";
+import {TodoService} from "../shared/services/todo.service";
+import {MaterialService} from "../shared/classes/material.service";
 
 @Component({
   selector: 'app-alltodo-page',
@@ -23,11 +26,17 @@ export class AlltodoPageComponent implements OnInit {
   imagePreviewEdit: string | undefined = ''
   // @ts-ignore
   category: Category
+  // @ts-ignore
+  todo: Todo
+
   date = new Date
+  nowDate = Date.now()
+  nowTime = Date.now()
 
   categories: Category[] = []
 
-  constructor(private alltodoService: CategoriesService
+  constructor(private alltodoService: CategoriesService,
+              private todoService: TodoService,
   ) {
   }
 
@@ -39,6 +48,7 @@ export class AlltodoPageComponent implements OnInit {
 
   dateNow(){
     return this.date.toLocaleDateString()
+
   }
   timeNow(){
     return this.date.toLocaleTimeString()
@@ -62,12 +72,20 @@ export class AlltodoPageComponent implements OnInit {
     let obs$
     if (this.isNew) {
       // create
-
+      obs$ = this.todoService.create(this.form.value.name, this.image)
     } else {
       //update
-
+      obs$ = this.todoService.update(this.category._id, this.form.value.name, this.image)
     }
-
+    obs$.subscribe(
+      todo => {
+        this.todo = todo
+        MaterialService.toast('Changes saved')
+      },
+      error => {
+        console.log(error)
+      }
+    )
   }
 
 }
