@@ -12,7 +12,7 @@ export class SiteLayoutComponent implements OnInit {
   links = [
     {url: '/overview', name: 'Overview'},
     { url: '/categories', name: 'Categories'},
-    {url: '/all-todo', name: '#Todo'}
+    {url: '/all-todo', name: 'Add ToDo'}
   ]
 
   constructor(private auth: AuthService, private router: Router) {
