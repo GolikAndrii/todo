@@ -4,7 +4,7 @@
   (ngSubmit)="onSubmit()"
 >
   <div class="card-content">
-    <span class="card-title">Log In form</span>
+    <span class="card-title">LogIn</span>
     <div class="input-field">
       <input
         formControlName = "email"
@@ -27,12 +27,14 @@
       >
       <label for="password">Password:</label>
     </div>
+
   </div>
-  <div class="card-action">
+  <div class="card-action d-flex">
     <button
       type="submit"
       class="modal-action btn waves-effect"
     >Log in</button>
+    <a routerLink="../repassword" class="forgot-pass">Forgot your password?</a>
     <!--      [disabled]="form.invalid || form.disabled"-->
   </div>
 </form>

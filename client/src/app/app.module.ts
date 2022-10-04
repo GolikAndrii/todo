@@ -15,6 +15,7 @@ import { AlltodoPageComponent } from './alltodo-page/alltodo-page.component';
 import { CategoriesFormComponent } from './categories-page/categories-form/categories-form.component';
 import { LoaderComponent } from './shared/components/loader/loader.component';
 import {TokenInterceptor} from "./shared/classes/token.interceptor";
+import { RepasswordPageComponent } from './repassword-page/repassword-page.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {TokenInterceptor} from "./shared/classes/token.interceptor";
     AlltodoPageComponent,
     CategoriesFormComponent,
     LoaderComponent,
+    RepasswordPageComponent,
   ],
   imports: [
     BrowserModule,

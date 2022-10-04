@@ -1,0 +1,9 @@
+.d-flex{
+  justify-content: space-around;
+  align-items: center;
+}
+
+.forgot-pass{
+  text-transform: none!important;
+  color: #ee6e73!important;
+}

@@ -1,7 +1,6 @@
 import {Injectable} from "@angular/core"
 import {User} from "../interfaces";
 import {HttpClient} from "@angular/common/http";
-
 import { tap} from "rxjs/operators";
 import {Observable} from "rxjs";
 
@@ -18,6 +17,9 @@ export class AuthService{
 
   register(user: User) : Observable <User>{
     return this.http.post<User>('/todo/auth/register', user)
+  }
+  repassword(user: User) : Observable <User>{
+    return this.http.post<User>('/todo/auth/repassword', user)
   }
 
   login(user: User): Observable<{token: string}>{

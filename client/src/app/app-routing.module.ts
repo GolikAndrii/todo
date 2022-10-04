@@ -8,6 +8,7 @@ import {OverviewPageComponent} from "./overview-page/overview-page.component";
 import {CategoriesPageComponent} from "./categories-page/categories-page.component";
 import {AlltodoPageComponent} from "./alltodo-page/alltodo-page.component";
 import {CategoriesFormComponent} from "./categories-page/categories-form/categories-form.component";
+import {RepasswordPageComponent} from "./repassword-page/repassword-page.component";
 // import {AuthGuard} from "./shared/classes/auth.guard";
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
     path: "", component: AuthLayoutComponent, children: [
       {path: '',redirectTo: '/login', pathMatch:'full'},
       {path: 'login', component: LoginPageComponent},
-      {path: 'register', component: RegisterPageComponent}
+      {path: 'register', component: RegisterPageComponent},
+      {path: 'repassword', component: RepasswordPageComponent}
     ]
   },
   {
